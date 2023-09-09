@@ -3,6 +3,12 @@
 Allows you to automatically make your vtuber model follow the head of a Live2D model in Unity.
 
 This is a barebone implementation and will require some work to fit into your project. I left method in the script to easily control the behaviour of the plugin.
+## Demo
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=AHXG5rncdGM" target="_blank">
+ <img src="http://img.youtube.com/vi/AHXG5rncdGM/mqdefault.jpg" alt="Watch the video" width="560" height="315" border="10" />
+</a>
+
 ## Requirements
 
 * [Live2D Cubism SDK for Unity](https://www.live2d.com/en/download/cubism-sdk/download-unity) (Official Website)
