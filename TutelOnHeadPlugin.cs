@@ -107,6 +107,7 @@ public class TutelOnHeadPlugin : UnityVTSPlugin
     public void SetMovement(bool state)
     {
         movementLocked = !state;
+        CacheModelScale();
     }
 
     #region UTILITY
