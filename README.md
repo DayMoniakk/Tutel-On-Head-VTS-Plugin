@@ -1,6 +1,6 @@
 # Tutel On Head
 
-Allows you to automatically make your vtuber model follow the head of a Live2D model in Unity.
+Allows you to attach your vtuber model to the head of a Live2D model in Unity.
 
 This is a barebone implementation and will require some work to fit into your project. I left method in the script to easily control the behaviour of the plugin.
 ## Demo
