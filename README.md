@@ -4,9 +4,9 @@ Allows you to attach your vtuber model to the head of a Live2D model in Unity.
 
 This is a barebone implementation and will require some work to fit into your project. I left method in the script to easily control the behaviour of the plugin.
 ## Demo
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=AHXG5rncdGM" target="_blank">
- <img src="http://img.youtube.com/vi/AHXG5rncdGM/mqdefault.jpg" alt="Watch the video" width="560" height="315" border="10" />
+(The cat is a Vtube Studio model and Hiyori is running inside Unity)
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=AlafecDYZeI" target="_blank">
+ <img src="http://img.youtube.com/vi/AlafecDYZeI/mqdefault.jpg" alt="Watch the video" width="560" height="315" border="10" />
 </a>
 
 ## Requirements
@@ -21,6 +21,6 @@ This is a barebone implementation and will require some work to fit into your pr
 1. Create a new empty gameobject and attach the **TutelOnHeadPlugin.cs** script on it
 1. Fill the required field (except *Plugin Icon* which is not needed)
 1. Open Vtube Studio, go to settings and scroll down until you see **Vtube Studio plugins**, then click **Start API**
-1. Use the OBS Preview to adjust the scale of your vtuber model, once the plugin is connected to Vtube Studio the scale will be overrided
+1. Use the OBS Preview to adjust the scale of your vtuber model, once the plugin is connected to Vtube Studio the scale will be overriden by the plugin
 1. Press play in unity
 1. If your vtuber model isn't properly placed on the head feel free to adjust the **Model Offset** property in the inspector
