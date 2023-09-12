@@ -1,16 +1,13 @@
 # Tutel On Head
-
 Allows you to attach your vtuber model to the head of a Live2D model in Unity.
 
 This is a barebone implementation and will require some work to fit into your project. I left method in the script to easily control the behaviour of the plugin.
+
 ## Demo
 (The cat is a Vtube Studio model and Hiyori is running inside Unity)
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=AlafecDYZeI" target="_blank">
- <img src="http://img.youtube.com/vi/AlafecDYZeI/mqdefault.jpg" alt="Watch the video" width="560" height="315" border="10" />
-</a>
+https://github.com/DayMoniakk/Tutel-On-Head-VTS-Plugin/assets/54359117/4312b84c-0ebd-4b32-97c9-7248fda4eb55
 
 ## Requirements
-
 * [Live2D Cubism SDK for Unity](https://www.live2d.com/en/download/cubism-sdk/download-unity) (Official Website)
 * [VTS-Sharp](https://assetstore.unity.com/packages/tools/integration/vts-sharp-203218) (Unity Asset Store)
 
