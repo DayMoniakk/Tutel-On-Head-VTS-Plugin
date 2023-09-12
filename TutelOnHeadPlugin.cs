@@ -4,9 +4,13 @@ using VTS.Unity;
 using Live2D.Cubism.Core;
 
 // INFO ----------------------------------------------------------------------------------------------------------------------------------- //
-// To calculate the position of the head I actually use the vertex positions in the CubismDrawable component.
-// I take the vertex point that has the highest Y value and add the current CubismDrawable Gameobject position to get the world position.
+// To calculate the position of the head I actually use the vertex positions from the CubismDrawable component.
+// I take the vertex point that has the highest Y position value and add the current CubismDrawable Gameobject position to get the world position.
 // This might be a dirty way of doing it but that's the only way I got this to work, so feel free to replace it with your own system.
+
+// Also, when the plugin is running there is no way to change the scale of the model in Vtube Studio.
+// I cache the scale value before and use it in the avatar movement request (if I don't specify a number it just chooses the default value which is way too zoomed)
+// If you need to change the scale without restarting the plugin use the "SetMovement(true/false)" method.
 // ---------------------------------------------------------------------------------------------------------------------------------------- //
 
 public class TutelOnHeadPlugin : UnityVTSPlugin
@@ -21,7 +25,7 @@ public class TutelOnHeadPlugin : UnityVTSPlugin
 
     private float modelSize; // Stores the size of the model before moving it
     private bool isConnected; // Used to check if we are connected to the Vtube Studio API
-    private bool movementLocked; // This simply prevent this script from moving your Vtuber model (basically a utility thing)
+    private bool movementLocked; // This simply prevent this script from moving your Vtuber model if turned on
 
     private int headTopIndex; // Stores the index of the highest point in the CubismDrawable, this is used to track the top of the head
     private Vector3 headAttachPosition; // The position in world space of the top of the head
@@ -69,7 +73,7 @@ public class TutelOnHeadPlugin : UnityVTSPlugin
     /// </summary>
     public void ConnectToVtubeStudio()
     {
-        headTopIndex = GetHighestYIndex(head.VertexPositions); // Calculate the highest point of the head
+        headTopIndex = GetHighestYIndex(head.VertexPositions); // Calculate the highest point of the head (for short: to track the position of the head)
 
         Initialize(
             new WebSocketSharpImpl(Logger),
@@ -106,8 +110,8 @@ public class TutelOnHeadPlugin : UnityVTSPlugin
     /// </summary>
     public void SetMovement(bool state)
     {
+        CacheModelScale(); // If you changed your model scale we need to save this information
         movementLocked = !state;
-        CacheModelScale();
     }
 
     #region UTILITY
@@ -115,7 +119,7 @@ public class TutelOnHeadPlugin : UnityVTSPlugin
     private void CacheModelScale() // Cache the current size of the model, if we don't then the size is going to be reverted to the default value
     {
         // Doing it this way has a drawback, you cannot change the scale of your avatar in Vtube Studio while this script is moving it.
-        // So you have to set your avatar scale before starting the script
+        // So you have to set your avatar scale before starting the plugin
 
         GetCurrentModel((success) =>
         {
