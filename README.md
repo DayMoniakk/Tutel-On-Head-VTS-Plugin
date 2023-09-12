@@ -6,7 +6,12 @@ This is a barebone implementation and will require some work to fit into your pr
 ## Demo
 (The cat is a Vtube Studio model and Hiyori is running inside Unity)
 
-https://github.com/DayMoniakk/Tutel-On-Head-VTS-Plugin/assets/54359117/4312b84c-0ebd-4b32-97c9-7248fda4eb55
+
+
+https://github.com/DayMoniakk/Tutel-On-Head-VTS-Plugin/assets/54359117/785c38f5-2e69-4453-81ee-31d633300b8e
+
+
+
 
 ## Requirements
 * [Live2D Cubism SDK for Unity](https://www.live2d.com/en/download/cubism-sdk/download-unity) (Official Website)
