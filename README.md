@@ -22,3 +22,6 @@ https://github.com/DayMoniakk/Tutel-On-Head-VTS-Plugin/assets/54359117/4312b84c-
 1. Use the OBS Preview to adjust the scale of your vtuber model, once the plugin is connected to Vtube Studio the scale will be overriden by the plugin
 1. Press play in unity
 1. If your vtuber model isn't properly placed on the head feel free to adjust the **Model Offset** property in the inspector
+
+# Credits
+This content uses sample data owned and copyrighted by Live2D Inc. The sample data are utilized in accordance with terms and conditions set by Live2D Inc. This content itself is created at the author’s sole discretion.
