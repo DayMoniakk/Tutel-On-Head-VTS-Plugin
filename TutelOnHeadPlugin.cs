@@ -20,6 +20,7 @@ public class TutelOnHeadPlugin : UnityVTSPlugin
     [Header("References")]
     [SerializeField][Tooltip("The head artmesh (found in \"Drawables\")")] private CubismDrawable head;
     [SerializeField][Tooltip("The model reference")] private CubismModel model;
+    [SerializeField][Tooltip("Used to calculate the screen position of the model")] private Camera mainCamera;
     [Header("Settings")]
     [SerializeField][Tooltip("Allows you to offset your Vtuber avatar position in case it's not properly placed on the head")] private Vector2 modelOffset;
 
@@ -28,7 +29,6 @@ public class TutelOnHeadPlugin : UnityVTSPlugin
     private bool movementLocked; // This simply prevent this script from moving your Vtuber model if turned on
 
     private int headTopIndex; // Stores the index of the highest point in the CubismDrawable, this is used to track the top of the head
-    private Vector3 headAttachPosition; // The position in world space of the top of the head
 
     #region UNITY METHODS
 
@@ -36,6 +36,7 @@ public class TutelOnHeadPlugin : UnityVTSPlugin
     {
         _pluginName = "Tutel On Head";
         _pluginAuthor = "DayMoniakk";
+        mainCamera = Camera.main;
     }
 
     private void Start()
@@ -48,12 +49,12 @@ public class TutelOnHeadPlugin : UnityVTSPlugin
         if (!isConnected) return; // If we are not connected to Vtube Studio we don't need to execute this part
         if (movementLocked) return; // In case you need to adjust something in Vtube Studio so this script won't override anything
 
-        headAttachPosition = GetAttachPosition(); // Get the current position of the top of the head
+        Vector3 vsPos = GetScreenCoords(GetAttachPosition()); // Get the current position of the top of the head and convert it to Vtube Studio's coordinates system
 
         VTSMoveModelData.Data newPos = new VTSMoveModelData.Data() // Fill the request to move the avatar in Vtube Studio
         {
-            positionX = headAttachPosition.x + modelOffset.x,
-            positionY = headAttachPosition.y + modelOffset.y,
+            positionX = vsPos.x + modelOffset.x,
+            positionY = vsPos.y + modelOffset.y,
             size = modelSize
         };
 
@@ -129,6 +130,15 @@ public class TutelOnHeadPlugin : UnityVTSPlugin
         {
             Debug.LogError("Cannot access model size > " + error.data.message);
         });
+    }
+
+    private Vector3 GetScreenCoords(Vector3 pos) // convert a position to Vtube Studio's coordinates system
+    {
+        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(pos);
+        viewportPosition.x = viewportPosition.x * 2 - 1;
+        viewportPosition.y = viewportPosition.y * 2 - 1;
+
+        return viewportPosition;
     }
 
     private Vector3 GetAttachPosition() // Get the top head position

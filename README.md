@@ -28,5 +28,7 @@ https://github.com/DayMoniakk/Tutel-On-Head-VTS-Plugin/assets/54359117/785c38f5-
 1. Press play in unity
 1. If your vtuber model isn't properly placed on the head feel free to adjust the **Model Offset** property in the inspector
 
+**Important Note: You need to have the same window resolution between the Unity app and Vtube Studio !!**
+
 # Credits
 This content uses sample data owned and copyrighted by Live2D Inc. The sample data are utilized in accordance with terms and conditions set by Live2D Inc. This content itself is created at the author’s sole discretion.
